@@ -22,6 +22,15 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
 
   @override
   Widget build(BuildContext context) {
+    if (widget.questions.isEmpty) {
+      return Scaffold(
+        appBar: AppBar(title: const Text("AI Quiz")),
+        body: const Center(
+          child: Text("No questions available for this PDF."),
+        ),
+      );
+    }
+
     final question = widget.questions[currentIndex];
     final progress = (currentIndex + 1) / widget.questions.length;
 
@@ -116,6 +125,11 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
   }
 
   void _finishQuiz() async {
+    if (results.isEmpty) {
+      if (mounted) Navigator.pop(context);
+      return;
+    }
+
     final accuracy = results.where((r) => r).length / results.length;
     final feedback = AdaptiveLogic.getFeedback(accuracy);
 

@@ -30,14 +30,28 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           const SizedBox(height: 24),
           ElevatedButton.icon(
-            onPressed: null,
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text("PDF upload feature coming soon!"),
+                  duration: Duration(seconds: 2),
+                ),
+              );
+            },
             icon: const Icon(Icons.upload),
             label: const Text("Upload PDF"),
             style: ElevatedButton.styleFrom(padding: const EdgeInsets.all(16)),
           ),
           const SizedBox(height: 12),
           ElevatedButton.icon(
-            onPressed: null,
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text("Scan feature coming soon!"),
+                  duration: Duration(seconds: 2),
+                ),
+              );
+            },
             icon: const Icon(Icons.camera_alt),
             label: const Text("Scan Page"),
             style: ElevatedButton.styleFrom(padding: const EdgeInsets.all(16)),
